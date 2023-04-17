@@ -33,5 +33,12 @@ public class No<T> {
     public String toString() {
         return "No [object=" + object + "]";
     }
+
+    public No<T> getProximoNo() {
+        return null;
+    }
+
+    public void setProximoNo(No<T> novoNo) {
+    }
     
 }
