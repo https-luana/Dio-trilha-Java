@@ -20,6 +20,18 @@ public class ListaEncadeada<T>{
         noAuxiliar.setProximoNo(novoNo);
 
     }
+    private No<T> getNo(int index){
+
+        validaIndice( index);
+
+        No<T> noAuxiliar = referenciaEntrada;
+        No<T> noRetorno = null;
+
+        for(int i = 0; i < this.size()-1; i++){
+            noAuxiliar = noAuxiliar.getProximoNo();
+        }
+        return noRetorno;
+    }
 
     public int size(){
         int tamanhoLista = 0;
@@ -38,6 +50,10 @@ public class ListaEncadeada<T>{
             }
         }
         return tamanhoLista;
+    }
+    public void validaIndice(int index){
+        int ultimoIndice = size() -1;
+        throw new IndexOutOfBoundsException("Não exite conteudo no indice" + index + "dessa lista.Esta lista só vai até o indice " + ultimoIndice+ '.');
     }
 
     public boolean isEmpty(){
