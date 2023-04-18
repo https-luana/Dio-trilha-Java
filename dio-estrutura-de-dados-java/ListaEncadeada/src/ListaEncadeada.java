@@ -1,62 +1,56 @@
-public class ListaEncadeada<T>{
-    No<T> referenciaEntrada;
+public class ListaEncadeada<T> {
 
-    public ListaEncadeada(){
-        this.referenciaEntrada = null;
+    private T conteudo;
+    private ListaEncadeada proximoNo = null;
 
+    public ListaEncadeada(T conteudo){
+        this.conteudo = conteudo;
     }
 
-    public void add(T conteudo){
-        No<T> novoNo = new No<>(conteudo);
-        if(this.isEmpty()){
-            referenciaEntrada = novoNo;
-            return;
+    public ListaEncadeada(T conteudo, ListaEncadeada proximoNo) {
+        this.conteudo = conteudo;
+        this.proximoNo = proximoNo;
+    }
+
+    public T getConteudo() {
+        return conteudo;
+    }
+
+    public void setConteudo(T conteudo) {
+        this.conteudo = conteudo;
+    }
+
+    public ListaEncadeada getProximoNo() {
+        return proximoNo;
+    }
+
+    public void setProximoNo(ListaEncadeada proximoNo) {
+        this.proximoNo = proximoNo;
+    }
+
+    @Override
+    public String toString() {
+        return "No{" + conteudo + '}';
+    }
+
+    public String toStringEncadeado() {
+        String str = "No{" + conteudo + "}";
+
+        if(proximoNo != null){
+            str += "->" + proximoNo.toString();
+        }else{
+            str += "->null";
         }
-        No<T> noAuxiliar = referenciaEntrada;
-        for(int i = 0; i< this.size()-1; i++){
-            noAuxiliar = noAuxiliar.getProximoNo();
-
-        }
-        noAuxiliar.setProximoNo(novoNo);
-
-    }
-    private No<T> getNo(int index){
-
-        validaIndice( index);
-
-        No<T> noAuxiliar = referenciaEntrada;
-        No<T> noRetorno = null;
-
-        for(int i = 0; i < this.size()-1; i++){
-            noAuxiliar = noAuxiliar.getProximoNo();
-        }
-        return noRetorno;
+        return str;
     }
 
-    public int size(){
-        int tamanhoLista = 0;
-        No<T> referenciaAux = referenciaEntrada;
-        while(true){
-            if(referenciaAux != null){
-                tamanhoLista++;
-                if(referenciaAux.getProximoNo() !=null){
-                    referenciaAux = referenciaAux.getProximoNo();
-
-                }else{
-                    break;
-                }
-            }else {
-                break;
-            }
-        }
-        return tamanhoLista;
-    }
-    public void validaIndice(int index){
-        int ultimoIndice = size() -1;
-        throw new IndexOutOfBoundsException("Não exite conteudo no indice" + index + "dessa lista.Esta lista só vai até o indice " + ultimoIndice+ '.');
+    public void add(String string) {
     }
 
-    public boolean isEmpty(){
-        return referenciaEntrada ==null ? true : false;
+    public void remove(int i) {
+    }
+
+    public char[] get(int i) {
+        return null;
     }
 }
